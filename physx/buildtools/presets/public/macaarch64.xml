@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<preset name="macaarch64" comment="macOS ARM Xcode PhysX general settings">
+  <platform targetPlatform="macaarch64" compiler="xcode" />
+  <CMakeSwitches>
+    <cmakeSwitch name="PX_BUILDSNIPPETS" value="False" comment="Generate the snippets" />
+    <cmakeSwitch name="PX_GENERATE_STATIC_LIBRARIES" value="False" comment="Generate static libraries" />
+  </CMakeSwitches>
+  <CMakeParams>
+    <cmakeParam name="CMAKE_INSTALL_PREFIX" value="install/macaarch64/PhysX" comment="Install path relative to PhysX SDK root" />
+  </CMakeParams>
+</preset>
