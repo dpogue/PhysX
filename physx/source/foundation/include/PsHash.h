@@ -38,7 +38,7 @@
 #pragma warning(disable : 4302)
 #endif
 
-#if PX_LINUX
+#if PX_LINUX || PX_SOLARIS
 #include "foundation/PxSimpleTypes.h"
 #endif
 

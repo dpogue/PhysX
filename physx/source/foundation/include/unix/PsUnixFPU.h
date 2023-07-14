@@ -32,7 +32,7 @@
 
 #include "foundation/PxPreprocessor.h"
 
-#if PX_LINUX || PX_PS4 || PX_OSX
+#if PX_LINUX || PX_PS4 || PX_OSX || PX_SOLARIS
 
 #if PX_X86 || PX_X64
 #if PX_EMSCRIPTEN

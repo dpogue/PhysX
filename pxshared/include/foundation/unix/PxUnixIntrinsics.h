@@ -33,7 +33,7 @@
 #include "foundation/Px.h"
 #include "foundation/PxSharedAssert.h"
 
-#if !(PX_LINUX || PX_ANDROID || PX_PS4 || PX_APPLE_FAMILY)
+#if !(PX_LINUX || PX_ANDROID || PX_PS4 || PX_APPLE_FAMILY || PX_SOLARIS)
 #error "This file should only be included by Unix builds!!"
 #endif
 

@@ -104,6 +104,8 @@ Operating system defines, see http://sourceforge.net/p/predef/wiki/OperatingSyst
 #define PX_ANDROID 1
 #elif defined(__linux__) || defined (__EMSCRIPTEN__) // note: __ANDROID__ implies __linux__
 #define PX_LINUX 1
+#elif defined(__sun)
+#define PX_SOLARIS 1
 #elif defined(__APPLE__)
 	#include <TargetConditionals.h>
 	#if TARGET_OS_IPHONE && TARGET_OS_MACCATALYST
@@ -183,6 +185,9 @@ define anything not defined on this platform to 0
 #ifndef PX_LINUX
 #define PX_LINUX 0
 #endif
+#ifndef PX_SOLARIS
+#define PX_SOLARIS 0
+#endif
 #ifndef PX_IOS
 #define PX_IOS 0
 #endif
@@ -255,7 +260,7 @@ family shortcuts
 #define PX_MICROSOFT_FAMILY (PX_XBOXONE || PX_WINDOWS_FAMILY || PX_XBOX_SERIES_X)
 #define PX_LINUX_FAMILY (PX_LINUX || PX_ANDROID)
 #define PX_APPLE_FAMILY (PX_IOS || PX_OSX)                  // equivalent to #if __APPLE__
-#define PX_UNIX_FAMILY (PX_LINUX_FAMILY || PX_APPLE_FAMILY) // shortcut for unix/posix platforms
+#define PX_UNIX_FAMILY (PX_LINUX_FAMILY || PX_APPLE_FAMILY || PX_SOLARIS) // shortcut for unix/posix platforms
 #if defined(__EMSCRIPTEN__)
 #define PX_EMSCRIPTEN 1
 #else

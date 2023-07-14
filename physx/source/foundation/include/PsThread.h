@@ -41,7 +41,7 @@
 
 #if PX_WINDOWS_FAMILY || PX_XBOXONE || PX_XBOX_SERIES_X
 #define PxSpinLockPause() __asm pause
-#elif PX_LINUX || PX_ANDROID || PX_PS4 || PX_APPLE_FAMILY || PX_SWITCH
+#elif PX_LINUX || PX_ANDROID || PX_PS4 || PX_APPLE_FAMILY || PX_SWITCH || PX_SOLARIS
 #define PxSpinLockPause() asm("nop")
 #else
 #error "Platform not supported!"
