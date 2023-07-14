@@ -40,7 +40,7 @@
 #include "common/windows/PxWindowsDelayLoadHook.h"
 #include "windows/PsWindowsInclude.h"
 #include "windows/CmWindowsModuleUpdateLoader.h"
-#elif PX_LINUX
+#elif PX_LINUX || PX_SOLARIS
 #include <dlfcn.h>
 #endif // ~PX_LINUX
 
@@ -131,7 +131,7 @@ namespace physx
 		}
 	}
 
-#elif PX_LINUX
+#elif PX_LINUX || PX_SOLARIS
 
 	void PxLoadPhysxGPUModule(const char*)
 	{

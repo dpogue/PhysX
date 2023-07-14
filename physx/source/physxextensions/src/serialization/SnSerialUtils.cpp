@@ -92,9 +92,9 @@ PxU32 getBinaryPlatformTag()
 	return sBinaryPlatformTags[0];
 #elif PX_WINDOWS && PX_X64
 	return sBinaryPlatformTags[1];
-#elif PX_LINUX && PX_X86
+#elif (PX_LINUX || PX_SOLARIS) && PX_X86
 	return sBinaryPlatformTags[2];
-#elif PX_LINUX && PX_X64
+#elif (PX_LINUX || PX_SOLARIS) && PX_X64
 	return sBinaryPlatformTags[3];
 #elif PX_OSX && PX_X86
 	return sBinaryPlatformTags[4];

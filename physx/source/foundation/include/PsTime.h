@@ -33,7 +33,7 @@
 #include "Ps.h"
 #include "foundation/PxFoundationConfig.h"
 
-#if PX_LINUX || PX_ANDROID
+#if PX_LINUX || PX_ANDROID || PX_SOLARIS
 #include <time.h>
 #endif
 
@@ -84,7 +84,7 @@ class PX_FOUNDATION_API Time
 	Second getLastTime() const;
 
   private:
-#if PX_LINUX || PX_ANDROID || PX_APPLE_FAMILY || PX_PS4
+#if PX_LINUX || PX_ANDROID || PX_APPLE_FAMILY || PX_PS4 || PX_SOLARIS
 	Second mLastTime;
 #else
 	int64_t mTickCount;

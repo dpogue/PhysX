@@ -28,7 +28,7 @@
 // Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 #include "PsFPU.h"
 
-#if !(defined(__CYGWIN__) || PX_ANDROID || PX_PS4)
+#if !(defined(__CYGWIN__) || PX_ANDROID || PX_PS4 || PX_SOLARIS)
 #include <fenv.h>
 PX_COMPILE_TIME_ASSERT(8 * sizeof(uint32_t) >= sizeof(fenv_t));
 #endif
@@ -51,7 +51,7 @@ physx::shdfnd::FPUGuard::FPUGuard()
 	mControlWords[0] = _mm_getcsr();
 	// set default (disable exceptions: _MM_MASK_MASK) and FTZ (_MM_FLUSH_ZERO_ON), DAZ (_MM_DENORMALS_ZERO_ON: (1<<6))
 	_mm_setcsr(_MM_MASK_MASK | _MM_FLUSH_ZERO_ON | (1 << 6));
-#elif defined(__EMSCRIPTEN__)
+#elif defined(__EMSCRIPTEN__) || PX_SOLARIS
 // not supported
 #else
 	PX_COMPILE_TIME_ASSERT(sizeof(fenv_t) <= sizeof(mControlWords));
@@ -80,7 +80,7 @@ physx::shdfnd::FPUGuard::~FPUGuard()
 	// restore control word and clear exception flags
 	// (setting exception state flags cause exceptions on the first following fp operation)
 	_mm_setcsr(mControlWords[0] & ~_MM_EXCEPT_MASK);
-#elif defined(__EMSCRIPTEN__)
+#elif defined(__EMSCRIPTEN__) || PX_SOLARIS
 // not supported
 #else
 	fesetenv(reinterpret_cast<fenv_t*>(mControlWords));

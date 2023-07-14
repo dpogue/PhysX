@@ -103,7 +103,7 @@
 #elif PX_LINUX || PX_ANDROID
 	#include <malloc.h>
 	#define PxAlloca(x) alloca(x)
-#elif PX_APPLE_FAMILY
+#elif PX_APPLE_FAMILY || PX_SOLARIS
 	#include <alloca.h>
 	#define PxAlloca(x) alloca(x)
 #elif PX_PS4

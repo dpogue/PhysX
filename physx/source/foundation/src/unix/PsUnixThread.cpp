@@ -36,15 +36,17 @@
 #include "PsThread.h"
 
 #include <math.h>
-#if !PX_APPLE_FAMILY && !defined(ANDROID) && !defined(__CYGWIN__) && !PX_PS4 && !PX_EMSCRIPTEN
+#if !PX_APPLE_FAMILY && !defined(ANDROID) && !defined(__CYGWIN__) && !PX_PS4 && !PX_EMSCRIPTEN && !PX_SOLARIS
 #include <bits/local_lim.h> // PTHREAD_STACK_MIN
+#elif PX_SOLARIS
+#include <limits.h>
 #endif
 #include <stdio.h>
 #include <pthread.h>
 #include <unistd.h>
 #if !PX_PS4
 #include <sys/syscall.h>
-#if !PX_APPLE_FAMILY && !PX_EMSCRIPTEN
+#if !PX_APPLE_FAMILY && !PX_EMSCRIPTEN && !PX_SOLARIS
 #include <asm/unistd.h>
 #include <sys/resource.h>
 #endif
@@ -115,7 +117,7 @@ static void setTid(_ThreadImpl& threadImpl)
 // AM: TODO: neither of the below are implemented
 #elif PX_APPLE_FAMILY
 	threadImpl.tid = syscall(SYS_gettid);
-#elif PX_EMSCRIPTEN
+#elif PX_EMSCRIPTEN || PX_SOLARIS
 	threadImpl.tid = pthread_self();
 #else
 	threadImpl.tid = syscall(__NR_gettid);
@@ -311,7 +313,7 @@ uint32_t ThreadImpl::setAffinityMask(uint32_t mask)
 	{
 #if PX_PS4
 		prevMask = setAffinityMaskPS4(getThread(this)->thread, mask);
-#elif PX_EMSCRIPTEN
+#elif PX_EMSCRIPTEN || PX_SOLARIS
 		// not supported
 #elif !PX_APPLE_FAMILY // Apple doesn't support syscall with getaffinity and setaffinity
 		int32_t errGet = syscall(__NR_sched_getaffinity, getThread(this)->tid, sizeof(prevMask), &prevMask);
