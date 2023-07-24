@@ -34,6 +34,18 @@
 #include "PsUserAllocated.h"
 #include "PsFPU.h"
 
+#ifdef __APPLE__
+#include <AvailabilityMacros.h>
+
+#if !defined(MAC_OS_X_VERSION_10_7) || (MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_7)
+static inline size_t strnlen(const char* string, size_t max_count)
+{
+    const char* p = (const char*)memchr(string, 0, max_count);
+    return p ? (p - string) : max_count;
+}
+#endif
+#endif
+
 namespace physx
 {
 namespace shdfnd

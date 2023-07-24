@@ -59,7 +59,7 @@
 #if !PX_PS4 && !PX_APPLE_FAMILY
 #define __STDC_FORMAT_MACROS
 #endif
-#include <inttypes.h>
+#include <cinttypes>
 #define PX_PRIu64 PRIu64
 #endif
 
