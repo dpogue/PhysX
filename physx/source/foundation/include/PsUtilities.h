@@ -127,7 +127,7 @@ __attribute__((noreturn))
 #endif
     PX_INLINE void debugBreak()
 {
-#if PX_WINDOWS || PX_XBOXONE || PX_XBOX_SERIES_X
+#if PX_MICROSOFT_FAMILY
 	__debugbreak();
 #elif PX_ANDROID
 	raise(SIGTRAP); // works better than __builtin_trap. Proper call stack and can be continued.
