@@ -39,11 +39,13 @@ ELSE()
 ENDIF()
 
 # Cache the CXX flags so the other CMakeLists.txt can use them if needed
-SET(PHYSX_CXX_FLAGS "/Wall /d2Zi+ /MP /WX /W4 /GF /GS- /GR- /Gd ${PHYSX_FP_MODE} ${PHYSX_WARNING_DISABLES}" CACHE INTERNAL "PhysX CXX")
+SET(PHYSX_CXX_FLAGS "${PHYSX_CXX_FLAGS} ${PHYSX_FP_MODE} ${PHYSX_WARNING_DISABLES}" CACHE INTERNAL "PhysX CXX")
+if(FALSE)
 SET(PHYSX_CXX_FLAGS_DEBUG "/Od ${WINCRT_DEBUG} /Zi" CACHE INTERNAL "PhysX Debug CXX Flags")
 SET(PHYSX_CXX_FLAGS_CHECKED "/O2 ${WINCRT_NDEBUG} /Zi" CACHE INTERNAL "PhysX Checked CXX Flags")
 SET(PHYSX_CXX_FLAGS_PROFILE "/O2 ${WINCRT_NDEBUG} /Zi" CACHE INTERNAL "PhysX Profile CXX Flags")
 SET(PHYSX_CXX_FLAGS_RELEASE "/O2 ${WINCRT_NDEBUG} /Zi" CACHE INTERNAL "PhysX Release CXX Flags")
+endif()
 
 # These flags are local to the directory the CMakeLists.txt is in, so don't get carried over to OTHER CMakeLists.txt (thus the CACHE variables above)
 SET(CMAKE_CXX_FLAGS ${PHYSX_CXX_FLAGS})

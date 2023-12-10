@@ -33,6 +33,8 @@ ENDIF()
 
 project(PhysXSDK C CXX)
 
+SET(PHYSX_CXX_FLAGS "${CMAKE_CXX_FLAGS}" CACHE INTERNAL "PhysX Debug CXX Flags")
+
 OPTION(PX_BUILDSNIPPETS "Generate the snippets" OFF)
 OPTION(PX_BUILDPUBLICSAMPLES "Generate the samples" OFF)
 OPTION(PX_CMAKE_SUPPRESS_REGENERATION "Disable zero_check projects" OFF)
