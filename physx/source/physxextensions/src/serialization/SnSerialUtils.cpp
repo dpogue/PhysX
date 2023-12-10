@@ -118,9 +118,9 @@ PxU32 getBinaryPlatformTag()
 	return sBinaryPlatformTags[12];
 #elif PX_LINUX && PX_A64
 	return sBinaryPlatformTags[13];
-#elif PX_UWP && PX_ARM
+#elif PX_WINDOWS && PX_ARM
 	return sBinaryPlatformTags[14];
-#elif PX_UWP && PX_A64
+#elif PX_WINDOWS && PX_A64
 	return sBinaryPlatformTags[15];
 #elif PX_OSX && PX_A64
 	return sBinaryPlatformTags[16];

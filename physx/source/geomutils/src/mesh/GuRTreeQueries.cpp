@@ -355,7 +355,7 @@ void RTree::traverseOBB(
 	Vec4V obbY = Vec4V_From_PxVec3_WUndefined(obb.rot.column1);
 	Vec4V obbZ = Vec4V_From_PxVec3_WUndefined(obb.rot.column2);
 
-#if PX_WINDOWS || PX_XBOXONE || PX_XBOX_SERIES_X
+#if PX_MICROSOFT_FAMILY
 	// Visual Studio compiler hangs with #defines
 	// On VMX platforms we use #defines in the other branch of this #ifdef to avoid register spills (LHS)
 	Vec4V obbESplatX = V4SplatElement<0>(obbE);

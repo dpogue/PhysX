@@ -281,7 +281,7 @@ C++ standard library defines
 #endif
 
 // legacy define for PhysX
-#define PX_WINDOWS (PX_WINDOWS_FAMILY && !PX_ARM_FAMILY)
+#define PX_WINDOWS PX_WINDOWS_FAMILY
 
 /**
 Assert macro
